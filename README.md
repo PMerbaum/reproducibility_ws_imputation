@@ -1,11 +1,12 @@
-# re-simple-python-project
+# repeat_imputation
 
-This simple project structure template repository is adapted from the [Good Enough Project](https://github.com/bvreede/good-enough-project) Cookiecutter template by Barbara Vreede (2019).
-If you plan to develop a package, check the [template repository for a Python package](https://github.com/UtrechtUniversity/re-python-package).
+This project is a part of short tandem repeat (STR) imputation accuracy analysis.
+Allele lengths are cruisial in some cases. For example, for patients with amyotrophic lateral sclerosis - a C9ortf72 gene that has longer than 30 STR's means shorter survival and more aggressive disease. Therefore, it is crucial to be able to predict (impute) the length of C9ORF72 gene in all samples. We established a method to calculate these lengths for SNP array data.
+We tested our model with known repeat lengths calculated with ExpansionHunter - we masked C9ortf72 gene region, reimputed it and now we check, how accurate our imputation is with build_roc_imputation_accuracy.py. 
 
 ## Usage
 
-Click "Use this template" at the top of this page to create a new repository with the same folder structure.
+Upload the build_roc_imputation_accuracy.py function and simulated data from data/raw folder. Data is formated as a dataframe and contains name of samples, phased imputed lengths that were extracted from imputed.vcf file, phased true lengths extracted from ExpansionHunter.vcf file and a dosage calulated during the imputation with Beagle software.
 
 ## Project Structure
 
@@ -22,9 +23,7 @@ The project structure distinguishes three kinds of folders:
 ├── README.md
 ├── requirements.txt
 ├── data               <- All project data, ignored by git
-│   ├── processed      <- The final, canonical data sets for modeling. (PG)
 │   ├── raw            <- The original, immutable data dump. (RO)
-│   └── temp           <- Intermediate data that has been transformed. (PG)
 ├── docs               <- Documentation notebook for users (HW)
 │   ├── manuscript     <- Manuscript source, e.g., LaTeX, Markdown, etc. (HW)
 │   └── reports        <- Other project reports and notebooks (e.g. Jupyter, .Rmd) (HW)
